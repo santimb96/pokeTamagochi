@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>test post pokemon</title>
+</head>
+<body>
+<form action="/api/render-pokemon" method="post">
+    <label for="id">ID POKÉMON</label><input name="id" id="id" type="number" placeholder="id del pokémon"/>
+    <label for="nombre">NOMBRE POKÉMON</label><input name="nombre" id="nombre" type="text" placeholder="nombre del pokémon"/>
+    <label for="tipo">TIPO POKÉMON</label><input name="tipo" id="tipo" type="text" placeholder="tipo del pokémon"/>
+    <label for="nivel">NIVEL POKÉMON</label><input name="nivel" id="nivel" type="number" placeholder="nivel del pokémon"/>
+    <input type="submit" value="crear"/>
+</form>
+</body>
+</html>

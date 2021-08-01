@@ -2,19 +2,39 @@ package org.pokeTamagochi.RestController;
 
 import org.pokeTamagochi.PokeService.PokeService;
 import org.pokeTamagochi.Pokemon;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.PUT, RequestMethod.POST})
-@RequestMapping("/api") //url === localhost:8080/api/
+import javax.servlet.http.HttpServletRequest;
+
+@Controller
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST})
 
 public class PokeTamagochiRest {
 
     private final PokeService pokeService = new PokeService();
 
-    @GetMapping("/testReturnPokemon")
+    @RequestMapping("/api/index")
+    public String formulario(){
+        return "index";
+    }
 
-    public Pokemon testReturnPokemon(){
-        return pokeService.initPokemon();
+    @RequestMapping(value = "/api/render-pokemon", method = RequestMethod.POST)
+    public String renderPokemon(
+            @RequestParam int id,
+            @RequestParam String nombre,
+            @RequestParam String tipo,
+            @RequestParam int nivel
+    ){
+        pokeService.crearPokemon(id, nombre, tipo, nivel);
+        return "render-pokemon";
+    }
+
+    @GetMapping("/api/devolver")
+    @ResponseBody
+    public Pokemon devolver(){
+        return pokeService.devolverPokemon();
     }
 }
+
+
