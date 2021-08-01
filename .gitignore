@@ -1,0 +1,6 @@
+.idea
+*.iml
+.vscode
+
+# Project exclude paths
+/target/
